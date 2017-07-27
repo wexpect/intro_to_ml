@@ -1,0 +1,7 @@
+# pip install --upgrade pip
+
+numpy
+scipy  # need pip 9
+scikit-learn
+matplotlib
+pylab
