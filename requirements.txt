@@ -5,3 +5,5 @@ scipy  # need pip 9
 scikit-learn
 matplotlib
 pylab
+
+nltk
