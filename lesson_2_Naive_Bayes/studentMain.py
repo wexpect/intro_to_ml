@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-""" Complete the code in ClassifyNB.py with the sklearn
+""" Complete the code in classify.py with the sklearn
     Naive Bayes classifier to classify the terrain data.
     
     The objective of this exercise is to recreate the decision 
@@ -10,7 +10,7 @@
 
 from prep_terrain_data import makeTerrainData
 from class_vis import prettyPicture, output_image
-from ClassifyNB import classify
+from classify import classify
 
 import numpy as np
 import pylab as pl
@@ -27,15 +27,20 @@ grade_slow = [features_train[ii][0] for ii in range(0, len(features_train)) if l
 bumpy_slow = [features_train[ii][1] for ii in range(0, len(features_train)) if labels_train[ii]==1]
 
 
-# You will need to complete this function imported from the ClassifyNB script.
+# You will need to complete this function imported from the classify script.
 # Be sure to change to that code tab to complete this quiz.
 clf = classify(features_train, labels_train)
 
+pred = clf.predict(features_test)
+
+from sklearn.metrics import accuracy_score
+accuracy = accuracy_score(pred, labels_test)  # 0.92
+print '\naccuracy', accuracy
 
 
 ### draw the decision boundary with the text points overlaid
 prettyPicture(clf, features_test, labels_test)
-output_image("test.png", "png", open("test.png", "rb").read())
+# output_image("test.png", "png", open("test.png", "rb").read())
 
 
 
