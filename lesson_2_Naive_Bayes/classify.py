@@ -17,18 +17,25 @@ def classify(features_train, labels_train):
 	# clf = SVC(C=.03, kernel='linear')	# 0.852
 	# clf = SVC(C=10, kernel='linear')	# 0.916
 
+	"""
+	C: controls tradeoff between smooth decision boundary
+	and classifying training points correctly
+	small C: smooth.
+	large C: more training points correct
+	"""
 	clf = SVC(kernel='rbf')	 # 0.92
-	# clf = SVC(C=0.03, kernel='rbf')
-	# clf = SVC(C=10, kernel='rbf')
+	# clf = SVC(C=0.03, kernel='rbf')  # 0.792
+	# clf = SVC(C=10, kernel='rbf')	# 0.912
+
 
 	"""
-	gamma defines how far the influence of a single example reaches
-	low value: far reach
-	high value: close reach. only consider points near decision boundary	
+	Gamma: defines how far the influence of a single example reaches
+	small Gamma: far reach. Smooth.
+	large Gamma: close reach. Only consider points near decision boundary. Ends
+	up with more intricate decision boundary
 	"""
-	# big gamma gives more intricate decision boundaries
+	# clf = SVC(kernel='rbf', gamma=0.01)	# 0.716
 	# clf = SVC(kernel='rbf', gamma=500)	# 0.944
-	# clf = SVC(kernel='rbf', gamma=0.01)	# 716
 
 	clf.fit(features_train, labels_train)
 	return clf

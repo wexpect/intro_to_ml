@@ -8,6 +8,11 @@
     authors and labels:
     Sara has label 0
     Chris has label 1
+
+
+    Command:
+        cd naive_bayes/
+        python nb_author_id.py
 """
     
 import sys
