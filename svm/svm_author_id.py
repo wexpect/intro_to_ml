@@ -26,7 +26,6 @@ features_train, features_test, labels_train, labels_test = preprocess()
 #########################################################
 
 from sklearn.svm import SVC
-from sklearn.metrics import accuracy_score
 
 # clf = SVC(kernel='linear')  # accu 0.984072810011
 
@@ -86,7 +85,7 @@ for p in pred:
         count += 1
 print 'count', count  # 877
 
-
+from sklearn.metrics import accuracy_score
 accu = accuracy_score(pred, labels_test)
 print 'accu', accu
 

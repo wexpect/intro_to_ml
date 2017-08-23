@@ -34,11 +34,13 @@ clf = classify(features_train, labels_train)
 pred = clf.predict(features_test)
 
 from sklearn.metrics import accuracy_score
-accuracy = accuracy_score(pred, labels_test)  # 0.92
+accuracy = accuracy_score(pred, labels_test)
 print '\naccuracy', accuracy
 
 
 ### draw the decision boundary with the text points overlaid
+
+# prettyPicture(clf, features_train, labels_train)
 prettyPicture(clf, features_test, labels_test)
 # output_image("test.png", "png", open("test.png", "rb").read())
 
