@@ -14,6 +14,7 @@ from classify import classify
 
 import numpy as np
 import pylab as pl
+from time import time
 
 
 features_train, labels_train, features_test, labels_test = makeTerrainData()
@@ -31,7 +32,14 @@ bumpy_slow = [features_train[ii][1] for ii in range(0, len(features_train)) if l
 # Be sure to change to that code tab to complete this quiz.
 clf = classify(features_train, labels_train)
 
+
+
+# ------- model predict --------
+t1 = time()
 pred = clf.predict(features_test)
+print "prediction time:", round(time() - t1, 3), "s"  # 0.379 s
+
+
 
 from sklearn.metrics import accuracy_score
 accuracy = accuracy_score(pred, labels_test)

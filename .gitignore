@@ -3,3 +3,7 @@ env/
 
 *.tgz
 maildir/
+
+test.png
+
+*.pyc

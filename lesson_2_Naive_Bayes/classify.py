@@ -1,6 +1,4 @@
-from sklearn.naive_bayes import GaussianNB
-from sklearn.svm import SVC
-from sklearn.tree import DecisionTreeClassifier
+from time import time
 
 
 def classify(features_train, labels_train):
@@ -12,10 +10,12 @@ def classify(features_train, labels_train):
 	### your code goes here!
 
 	# ------- Naive Bayes --------
+	# from sklearn.naive_bayes import GaussianNB
 	# clf = GaussianNB()	# 0.884
 
 
 	# ------- SVM --------
+	# from sklearn.svm import SVC
 	# clf = SVC(kernel='linear')	# 0.92
 	# clf = SVC(C=.03, kernel='linear')	# 0.852
 	# clf = SVC(C=10, kernel='linear')	# 0.916
@@ -41,11 +41,48 @@ def classify(features_train, labels_train):
 	# clf = SVC(kernel='rbf', gamma=500)	# 0.944
 
 
+
+	# ------- K Nearest Neighbors --------
+	# from sklearn.neighbors import KNeighborsClassifier
+	# clf = KNeighborsClassifier()  # 0.92
+
+
+
 	# ------- Decision Tree --------
-	# clf = DecisionTreeClassifier()  # 0.908
-	clf = DecisionTreeClassifier(min_samples_split=50)  # 0.912
+	# from sklearn.tree import DecisionTreeClassifier
+	# # clf = DecisionTreeClassifier()  # 0.908
+	# clf = DecisionTreeClassifier(min_samples_split=50)  # 0.912
 
 
 
+	# ------- Random Forest --------
+	from sklearn.ensemble import RandomForestClassifier
+	# clf = RandomForestClassifier()  # 0.924
+	# clf = RandomForestClassifier(
+	# 	n_estimators=100,
+	# 	# max_depth=None,
+	# 	# min_samples_split=50,
+	# )  # 0.92
+
+
+	# ------- Gradient Boosting Decision Trees --------
+	# from sklearn.ensemble import GradientBoostingClassifier
+	# # clf = GradientBoostingClassifier()  # 0.912
+	# clf = GradientBoostingClassifier(
+	# 	n_estimators=100,
+	# 	# min_samples_split=50,
+	# 	max_depth=10,
+	# )  # 0.92
+
+
+
+	# ------- model fit --------
+	t0 = time()
 	clf.fit(features_train, labels_train)
+	print "training time:", round(time() - t0, 3), "s"
+
+	# print 'feature_importances', clf.feature_importances_
+
 	return clf
+
+# 93.6
