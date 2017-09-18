@@ -38,10 +38,15 @@ print "download complete!"
 
 print
 print "unzipping Enron dataset (this may take a while)"
+
+# Option 1:
 import tarfile
 import os
 os.chdir("..")
 tfile = tarfile.open("enron_mail_20150507.tgz", "r:gz")
-tfile.extractall(".")
+tfile.extractall(".")  # the result dir is '/maildir'
+
+# Option 2:
+# command line to unzip: tar -xvzf enron_mail_20150507.tgz
 
 print "you're ready to go!"

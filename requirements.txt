@@ -7,3 +7,5 @@ matplotlib
 # pylab  # can not find
 
 nltk
+
+jupyter

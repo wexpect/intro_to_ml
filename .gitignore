@@ -3,7 +3,10 @@ env/
 
 *.tgz
 maildir/
+.DS_Store
 
 test.png
 
 *.pyc
+
+.ipynb_checkpoints/

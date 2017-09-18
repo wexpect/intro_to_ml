@@ -13,6 +13,10 @@
 
     enron_data["SKILLING JEFFREY K"]["bonus"] = 5600000
     
+
+    146 people, 18 POI people
+    21 features per person
+
 """
 
 import pickle

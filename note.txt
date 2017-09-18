@@ -1,4 +1,8 @@
 # -------------------
+jupyter notebook
+
+
+# -------------------
 # github
 git checkout -b local_branch_name
 git push origin local_branch_name
