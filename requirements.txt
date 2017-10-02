@@ -1,3 +1,4 @@
+## Upgrade pip to install scipy
 # pip install --upgrade pip
 
 numpy
@@ -9,3 +10,9 @@ matplotlib
 nltk
 
 jupyter
+
+
+## NLTK
+# sudo pip install -U nltk
+# import nltk
+# nltk.download()
