@@ -5,7 +5,6 @@ numpy
 scipy  # need pip 9
 scikit-learn
 matplotlib
-# pylab  # can not find
 
 nltk
 

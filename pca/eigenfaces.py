@@ -10,7 +10,8 @@ The dataset used in this example is a preprocessed excerpt of the
 
   .. _LFW: http://vis-www.cs.umass.edu/lfw/
 
-  original source: http://scikit-learn.org/stable/auto_examples/applications/face_recognition.html
+  original source:
+  http://scikit-learn.org/stable/auto_examples/applications/plot_face_recognition.html
 
 """
 
@@ -20,15 +21,19 @@ print __doc__
 
 from time import time
 import logging
-import pylab as pl
+# import pylab as pl  # no longer recommended
+from matplotlib import pyplot as plt
 import numpy as np
 
-from sklearn.cross_validation import train_test_split
+# from sklearn.cross_validation import train_test_split  # deprecated
+from sklearn.model_selection import train_test_split
 from sklearn.datasets import fetch_lfw_people
-from sklearn.grid_search import GridSearchCV
+# from sklearn.grid_search import GridSearchCV  # deprecated
+from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
-from sklearn.decomposition import RandomizedPCA
+# from sklearn.decomposition import RandomizedPCA  # deprecated
+from sklearn.decomposition import PCA
 from sklearn.svm import SVC
 
 # Display progress logs on stdout
@@ -70,7 +75,8 @@ n_components = 150
 
 print "Extracting the top %d eigenfaces from %d faces" % (n_components, X_train.shape[0])
 t0 = time()
-pca = RandomizedPCA(n_components=n_components, whiten=True).fit(X_train)
+# pca = RandomizedPCA(n_components=n_components, whiten=True).fit(X_train)
+pca = PCA(n_components=n_components, whiten=True, svd_solver='randomized').fit(X_train)
 print "done in %0.3fs" % (time() - t0)
 
 eigenfaces = pca.components_.reshape((n_components, h, w))
@@ -116,14 +122,14 @@ print confusion_matrix(y_test, y_pred, labels=range(n_classes))
 
 def plot_gallery(images, titles, h, w, n_row=3, n_col=4):
     """Helper function to plot a gallery of portraits"""
-    pl.figure(figsize=(1.8 * n_col, 2.4 * n_row))
-    pl.subplots_adjust(bottom=0, left=.01, right=.99, top=.90, hspace=.35)
+    plt.figure(figsize=(1.8 * n_col, 2.4 * n_row))
+    plt.subplots_adjust(bottom=0, left=.01, right=.99, top=.90, hspace=.35)
     for i in range(n_row * n_col):
-        pl.subplot(n_row, n_col, i + 1)
-        pl.imshow(images[i].reshape((h, w)), cmap=pl.cm.gray)
-        pl.title(titles[i], size=12)
-        pl.xticks(())
-        pl.yticks(())
+        plt.subplot(n_row, n_col, i + 1)
+        plt.imshow(images[i].reshape((h, w)), cmap=plt.cm.gray)
+        plt.title(titles[i], size=12)
+        plt.xticks(())
+        plt.yticks(())
 
 
 # plot the result of the prediction on a portion of the test set
@@ -143,4 +149,4 @@ plot_gallery(X_test, prediction_titles, h, w)
 eigenface_titles = ["eigenface %d" % i for i in range(eigenfaces.shape[0])]
 plot_gallery(eigenfaces, eigenface_titles, h, w)
 
-pl.show()
+plt.show()
