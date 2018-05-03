@@ -1,4 +1,4 @@
-# intro_to_ml
+# Udaticy intro_to_ml
 
 
 
